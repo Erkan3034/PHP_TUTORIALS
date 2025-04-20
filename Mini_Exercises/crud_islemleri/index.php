@@ -62,7 +62,9 @@ $total_pages = ceil($total_records / $records_per_page); // Sayfa sayısını he
         </form>
 
         <?php if ($results->num_rows > 0): ?>
+    
             <!-- Tablo Başlangıcı -->
+         <div class="table-responsive">
             <table class="table table-bordered table-hover table-striped  mx-auto">
                 <thead class="table-dark">
                     <tr>
@@ -104,7 +106,7 @@ $total_pages = ceil($total_records / $records_per_page); // Sayfa sayısını he
                     <?php endwhile; ?>
                 </tbody>
             </table>
-
+        </div>
             <!-- Sayfalama (Pagination) -->
             <nav>
                 <ul class="pagination justify-content-center">
