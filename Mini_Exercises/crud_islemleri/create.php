@@ -2,7 +2,7 @@
 // Veritabanı bağlantısı için bilgiler tanımlanıyor
 $host = 'localhost';
 $user = 'admin';
-$password = 'Erkan1205/*-+';  // Gerçek uygulamalarda şifreleri böyle açık yazmak güvenli değil!
+$password = 'password/*-+'; 
 $database = 'university';
 
 // mysqli nesnesi kullanılarak veritabanına bağlanılıyor
@@ -70,8 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="container mt-5">
     
-    <!-- PHP'de tanımlanan $message değişkeni burada gösteriliyor. 
-         Bu kısım çok önemli çünkü PHP'den HTML'e veri aktarımı bu şekilde yapılır. -->
+    <!-- PHP'de tanımlanan $message değişkeni burada gösteriliy -->
     <?= $message ?> 
 
         <h2 class="mb-4 text-center">Yeni Öğrenci Ekle</h2>
