@@ -2,7 +2,7 @@
 // Veritabanı bağlantısı için gerekli bilgiler
 $host = 'localhost';
 $user = 'admin';
-$password = 'Erkan1205/*-+'; // Not: Şifreyi gerçek projelerde gizli tut
+$password = 'password/*-+'; // Not: Şifreyi gerçek projelerde gizli tut
 $database = 'university';
 
 // MySQL sunucusuna bağlantı
