@@ -1,7 +1,7 @@
 <?php
 $host = 'localhost';
 $user = 'admin';
-$password = 'Erkan1205/*-+';
+$password = 'password/*-+';
 $database = 'university';
 $conn = new mysqli($host, $user, $password, $database);
 
