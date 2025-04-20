@@ -2,7 +2,7 @@
 // Veritabanı bağlantı bilgileri
 $host = 'localhost';
 $user = 'admin';
-$password = 'Erkan1205/*-+';
+$password = 'password/*-+';
 $database = 'university';
 
 // Veritabanı bağlantısı kurulur
@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: index.php"); // yönlendirme
         exit;
     } else {
-        echo "Hata: " . $conn->error; // Hata varsa gösterilir
+        echo "Hata: " . $conn->error; // Hata varsa göster
     }
 }
 ?>
@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Formun method'u POST. PHP'nin üstteki kısmında bu kontrol ediliyor -->
     <form method="post">
         <div class="row g-3">
-            <!-- Aşağıdaki input'larda PHP kodları içinde öğrenci bilgileri gösteriliyor -->
+         
             <!-- Bu sayede form açıldığında alanlar dolu geliyor -->
             <div class="col-md-6">
                 <input name="studentName" value="<?= $student['studentName'] ?>" class="form-control" required>
