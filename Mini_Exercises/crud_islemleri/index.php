@@ -1,8 +1,7 @@
 <?php
-// Veritabanı bağlantısı için gerekli bilgiler
 $host = 'localhost';
 $user = 'admin';
-$password = 'password/*-+'; // Not: Şifreyi gerçek projelerde gizli tut
+$password = 'password/*-+'; 
 $database = 'university';
 
 // MySQL sunucusuna bağlantı
@@ -47,7 +46,6 @@ $total_pages = ceil($total_records / $records_per_page); // Sayfa sayısını he
     <meta charset="utf-8">
     <title>Öğrenci Listesi</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS bağlantısı -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
