@@ -2,7 +2,7 @@
 // Veritabanı bağlantı bilgileri
 $host = 'localhost';
 $user = 'admin';
-$password = 'password/*-+';
+$password = 'Erkan1205*-+';
 $database = 'university';
 
 // Veritabanı bağlantısı kurulur
