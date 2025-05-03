@@ -15,7 +15,7 @@ if (rename($kaynakDosya, $hedefDosya)) {
 } else {
     echo "Dosya taşınamadı.<br>";
 }
-
+echo "<hr>";
 // 2. Dizin Taşıma (rename fonksiyonu ile)
 $kaynakDizin = 'orjinal_klasor';
 $hedefDizin = 'tasinan_klasor';
@@ -30,7 +30,7 @@ if (rename($kaynakDizin, $hedefDizin)) {
 } else {
     echo "Dizin taşınamadı.<br>";
 }
-
+echo "<hr>";
 // 3. Dosya Kopyalama ve Sonra Silme (Taşıma efekti)
 $kopyalanacakDosya = 'kopya_dosya.txt';
 $yeniKonum = 'yeni_konum/kopya_dosya.txt';
@@ -49,7 +49,7 @@ if (copy($kopyalanacakDosya, $yeniKonum)) {
 } else {
     echo "Dosya kopyalanamadı.<br>";
 }
-
+echo "<hr>";
 // 4. Dizin İçeriğini Taşıma (Özyinelemeli fonksiyon)
 function dizinTasi($kaynak, $hedef) {
     if (is_dir($kaynak)) {
@@ -87,7 +87,7 @@ if (!file_exists($kaynakDizin2)) {
 
 dizinTasi($kaynakDizin2, $hedefDizin2);
 echo "'$kaynakDizin2' dizini '$hedefDizin2' olarak taşındı.<br>";
-
+echo "<hr>";
 // 5. Dosya Uzantısını Değiştirme
 $resimDosyasi = 'foto.jpg';
 $yeniUzanti = 'foto.png';
@@ -100,7 +100,7 @@ if (rename($resimDosyasi, $yeniUzanti)) {
 } else {
     echo "Dosya uzantısı değiştirilemedi.<br>";
 }
-
+echo "<hr>";
 // 6. Büyük-Küçük Harf Duyarlı Yeniden Adlandırma (Linux/Unix sistemlerde)
 $kucukHarf = 'kucukdosya.txt';
 $buyukHarf = 'BUYUKDOSYA.txt';
@@ -114,6 +114,8 @@ if (rename($kucukHarf, $buyukHarf)) {
     echo "Büyük/küçük harf değişikliği yapılamadı.<br>";
 }
 
+echo "<hr>";
+
 // 7. Özel Karakterler İçeren Dosya Adları
 $ozelKarakterli = 'özel_karakterli_dosya_ğüşıç.txt';
 $yeniAd = 'yeni_adi_olan_dosya.txt';
@@ -126,6 +128,8 @@ if (rename($ozelKarakterli, $yeniAd)) {
 } else {
     echo "Özel karakterli dosya adı değiştirilemedi.<br>";
 }
+
+echo "<hr>";
 
 // 8. Dosya Adındaki Boşlukları Değiştirme
 $boslukluAd = 'dosya adında boşluk var.txt';
