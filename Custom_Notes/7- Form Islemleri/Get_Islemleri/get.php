@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 4c317293e58bf425a35f307add37067780b08f5b
 <?php
 echo "<h2 style='text-align: center;'>Formdan gelen veriler</h2>";
 echo "<pre>";
