@@ -110,7 +110,6 @@ echo "14. strcmp(): " . strcmp($str1, $str2) . "\n"; // Çıktı: pozitif bir sa
 
 echo "<hr>";
 
-
 // 15. strcasecmp() - Büyük/küçük harf duyarsız karşılaştırma
 $str1 = "PHP";
 $str2 = "php";
