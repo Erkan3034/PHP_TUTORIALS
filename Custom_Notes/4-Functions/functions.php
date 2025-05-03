@@ -2,22 +2,22 @@
 <?php
 //! =========================Temel fonksiyon yapısı=========================
 
-function isim()
+function isim1()
 {
     return "Erkan";
 }
  
-$isim = isim();
+$isim = isim1();
 echo $isim;
 
 //!============================================================================
 echo "<hr>";
-function sumNumbers($number1, $number2)
+function sumNumbers1($number1, $number2)
 {
     return $number1 + $number2;
 }
 
-echo sumNumbers("12", "5");
+echo sumNumbers1("12", "5");
 echo "<hr>";
 
 
@@ -91,14 +91,14 @@ echo "<hr>";
 */
 
 // pass by value
-function valGeek($num)
+function valGeek1($num)
 {
     $num += 2;
     return $num;
 }
 
 // pass by reference
-function refGeek(&$num)
+function refGeek1(&$num)
 {
     $num += 10;
     return $num;
@@ -106,10 +106,10 @@ function refGeek(&$num)
 
 $n = 10;
 
-valGeek($n);
+valGeek1($n);
 echo "The original value is still ('Pass By Value') $n \n";
 echo "<br>";
-refGeek($n);
+refGeek1($n);
 echo "The original value changes to('Pass By Ref') $n";
 
 
@@ -236,4 +236,3 @@ echo "The original value changes to('Pass By Ref') $n";
 
 
 ?>
->>>>>>> cbc7f9893baa939c1a26651bf141a64ce1edf6fe
