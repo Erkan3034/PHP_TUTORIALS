@@ -2,7 +2,7 @@
 // Veritabanı bağlantısı için bilgiler tanımlanıyor
 $host = 'localhost';
 $user = 'admin';
-$password = 'password/*-+'; 
+$password = 'password/*-+';
 $database = 'university';
 
 // mysqli nesnesi kullanılarak veritabanına bağlanılıyor

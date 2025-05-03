@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>MuratYasar_PHP_Odev_03</title>
+    <title>ErKan TURGUT</title>
   </head>
+
   <body>
     <h1>ERKAN TURGUT - PHP Temel - Ödev 03</h1>
     <ol>
@@ -19,7 +20,7 @@
       <input type='tel' name='num'/>
       <button type='submit'>Submit</button>
     </form>
-  </body>
+</body>
 </html>
 
 <?php

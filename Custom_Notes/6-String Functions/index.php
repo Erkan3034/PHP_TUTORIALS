@@ -46,7 +46,6 @@ echo "6. strtoupper(): " . strtoupper($str) . "\n"; // Çıktı: PHP PROGRAMLAMA
 // unicode karakterler için strtoupper() kullanmak yerine mb_strtoupper() kullanırız
 echo "<hr>";
 
-
 // 7. trim() - Stringin başındaki ve sonundaki boşlukları siler
 $str = "   PHP   ";
 echo "7. trim(): |" . trim($str) . "|\n"; // Çıktı: |PHP|
