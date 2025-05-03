@@ -60,4 +60,8 @@ $clearedArray = array_map('filtre', $_POST);
 echo "<hr>";
 echo "<pre>";   
 print_r($clearedArray); // temizlenmiş diziyi ekrana yazdırır.
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4c317293e58bf425a35f307add37067780b08f5b
 echo "</pre>";
