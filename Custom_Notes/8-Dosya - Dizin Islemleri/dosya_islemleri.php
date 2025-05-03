@@ -12,7 +12,7 @@ unlink('test1.txt');
 //!======================== Dosya Okuma===========================
 $dosya = fopen('dosya.txt','r'); // dosyayı aç
 
-echo fgets($dosya);  //dosya içeriğini getir(ilk satırını getirir)
+//echo fgets($dosya);  //dosya içeriğini getir(ilk satırını getirir)
 echo "<hr>";
 
 /*
@@ -24,13 +24,75 @@ while(!feof($dosya)){ // dosyanın sonuna kadar oku
 
 //?======= fsize() ve fread() ile dosya okuma========
 
-$boyut = filesize('dosya.txt'); // dosyanın boyutunu al
-echo fread($dosya,$boyut); // dosyayı oku (ilk parametre dosya, ikinci parametre dosya boyutu)(boyut yerine istediğimiz miktarı yazabiliriz)
+//$boyut = filesize('dosya.txt'); // dosyanın boyutunu al
+//echo fread($dosya,$boyut); // dosyayı oku (ilk parametre dosya, ikinci parametre dosya boyutu)(boyut yerine istediğimiz miktarı yazabiliriz)
+echo "------";
+
+
+while($satir = fgets($dosya)){
+    print_r(feof($dosya)); // dosyanın sonuna gelindi mi kontrol et (true/false döner)
+    echo "---->";
+    echo $satir."<br>";
+
+}
+echo "<hr>";
+
+
+//?================================================
+
+/*
+$file = fopen('file.txt','a'); // dosyayı aç (a ile açtık çünkü dosya içeriğini silmeden ekleme yapacağız)(yoksa oluşturulacak)
+
+fwrite($file,"Merhaba Dunya\n"); // dosyaya yaz (ilk parametre dosya, ikinci parametre yazılacak içerik)
+
+fclose($file); // dosyayı kapat( write işlemi yapıldıktan sonra dosyayı kapatmak önemli)
+
+$file = fopen('file.txt','r'); // dosyayı okuma modunda aç
+
+//fputs($file,"\nMerhaba Dünya"); // dosyaya yaz (ilk parametre dosya, ikinci parametre yazılacak içerik)
+$size = filesize('file.txt'); // dosyanın boyutunu al
+
+echo fread($file,$size); // dosyayı oku
+*/
+
 echo "<hr>";
 
 fclose($dosya); // dosyayı kapat
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <?php
