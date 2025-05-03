@@ -26,13 +26,11 @@ while(!feof($dosya)){ // dosyanın sonuna kadar oku
 
 //$boyut = filesize('dosya.txt'); // dosyanın boyutunu al
 //echo fread($dosya,$boyut); // dosyayı oku (ilk parametre dosya, ikinci parametre dosya boyutu)(boyut yerine istediğimiz miktarı yazabiliriz)
-echo "------";
+echo "<hr>";
 
 
-while($satir = fgets($dosya)){
-    print_r(feof($dosya)); // dosyanın sonuna gelindi mi kontrol et (true/false döner)
-    echo "---->";
-    echo $satir."<br>";
+while(!feof($dosya)){ // dosyanın sonuna kadar oku
+    echo fgets($dosya)."<br>";
 
 }
 echo "<hr>";
