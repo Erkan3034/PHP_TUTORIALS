@@ -67,23 +67,36 @@ if($control){
 }else{
     echo "Dosya yok";
 }
+
+
+echo "<hr>";
+
+//?======================== Dosya ve dizin kontrolü===========================
+$control2 = is_file('dosya.txt'); // dosyanın dosya olup olmadığını kontrol et (bool)
+
+echo $control2 ? "Dosyadır!": "Dosya değildir!";
+
+
+echo "<hr>";
+
+file_put_contents('dosya.txt',"\nIcerik file_put_contents() ile bu metin eklendi" , FILE_APPEND); // dosyaya içerik yaz (ilk parametre dosya adı, ikinci parametre yazılacak içerik)
+
+echo "<hr>";
+$get = file_get_contents('dosya.txt'); // dosyadan içerik oku (ilk parametre dosya adı)
+
+print_r($get); // dosyadan okunan içeriği yazdır (print_r ile daha düzenli yazdırır)
+
+
+//! ===========PHP DOSYASI HAZIRLAMA ===========
+
+$phpDosyasi = "<?php ";
+$phpDosyasi .= '$isim = "Erkan TURGUT"; ';
+$phpDosyasi .= 'echo $isim;';
+
+file_put_contents('deneme.php', $phpDosyasi);
+
+
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <?php
@@ -107,6 +120,11 @@ filesize() : Dosyanın boyutunu alır. İlk parametre dosya adıdır. Eğer dosy
 touch() : Dosyayı oluşturur. İlk parametre dosya adı, ikinci parametre ise oluşturulma tarihidir. Eğer dosya oluşturulamazsa false döner.
 unlink() : Dosyayı siler. İlk parametre dosya adıdır. Eğer dosya silinemezse false döner.
 
+
+
+file_put_contents() : Dosyaya içerik yazar. İlk parametre dosya adı, ikinci parametre yazılacak içerik, üçüncü parametre ise dosya erişim modudur. Eğer dosya açılamazsa false döner.
+
+file_get_contents() : Dosyadan içerik okur. İlk parametre dosya adıdır. Eğer dosya okunamazsa false döner.
 
 
 ============Dosya Erişim Modları - Dosya Kipleri====================

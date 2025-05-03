@@ -38,3 +38,7 @@ Mauris nec ligula ac ligula pretium tincidunt quis vitae dolor.
 Morbi eget arcu sed diam dignissim tristique vel pretium arcu.
 Etiam a justo eu felis hendrerit tristique vel eu turpis.
 LAST LİNE!
+Icerik file_put_contents() ile bu metin eklendi
+Icerik file_put_contents() ile bu metin eklendi
+Icerik file_put_contents() ile bu metin eklendi
+Icerik file_put_contents() ile bu metin eklendi
