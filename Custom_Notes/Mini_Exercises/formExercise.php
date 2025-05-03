@@ -139,7 +139,7 @@
                 $closest = $nextNum;
             }
             
-            return "$num sayısı 3'e tam bölünemez. En yakın bölünebilen sayı: $closest";
+            return "$num sayısı 3'e tam bölünemez! En yakın bölünebilen sayı: $closest";
         }
     }
     ?>
