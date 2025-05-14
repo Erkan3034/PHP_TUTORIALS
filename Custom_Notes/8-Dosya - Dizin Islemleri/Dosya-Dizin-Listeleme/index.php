@@ -31,6 +31,30 @@ $dizi = array_map(function ($item)  use ($baseDir) {
 
 echo "<pre>";
 print_r($dizi);
+echo "<hr>";
+
+//Tüm dosyaları listeleme
 
 
+function listAll($dir) {
+
+    $files = scandir($dir);
+    foreach ($files as $file) {
+        echo $file . "<br>";
+    }
+}
+
+listAll($baseDir); 
+//Tüm dosyaları listeleme
+
+
+function listAll($dir) {
+
+    $files = scandir($dir);
+    foreach ($files as $file) {
+        echo $file . "<br>";
+    }
+}
+
+listAll($baseDir); 
 ?>
