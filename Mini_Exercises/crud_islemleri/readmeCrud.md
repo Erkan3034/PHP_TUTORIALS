@@ -41,4 +41,4 @@ Bu proje, PHP ve MySQL kullanılarak geliştirilmiş basit bir **Öğrenci Yöne
 1. Projeyi indirin veya klonlayın:
 
 ```bash
-git clone https://github.com/Erkan3034/PHP_TUTORIALS/upload/main/Mini_Exercises/CRUD_ISLEMLERI.git
+git clone https://github.com/Erkan3034/PHP_TUTORIALS/tree/main/Mini_Exercises/crud_islemleri.git

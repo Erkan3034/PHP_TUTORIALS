@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 //! =========================Temel fonksiyon yapısı=========================
 
@@ -117,6 +116,7 @@ echo "The original value changes to('Pass By Ref') $n";
 
 
 ?>
+<<<<<<< HEAD
 =======
 <?php
 //! =========================Temel fonksiyon yapısı=========================
@@ -236,3 +236,4 @@ echo "The original value changes to('Pass By Ref') $n";
 
 
 ?>
+>>>>>>> cbc7f9893baa939c1a26651bf141a64ce1edf6fe

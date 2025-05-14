@@ -1,8 +1,8 @@
 <?php
 // Veritabanı bağlantısı için bilgiler tanımlanıyor
 $host = 'localhost';
-$user = 'root';
-$password = 'Erkan1205/*-+';  // Gerçek uygulamalarda şifreleri böyle açık yazmak güvenli değil!
+$user = 'admin';
+$password = 'Erkan1205/*-+';
 $database = 'university';
 
 // mysqli nesnesi kullanılarak veritabanına bağlanılıyor
@@ -38,10 +38,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $message = "<div class='alert alert-danger text-center'>Bu öğrenci numarasıyla kayıtlı bir öğrenci zaten var.</div>";
     } else {
         // Yeni öğrenci veritabanına ekleniyor
-        $stmt = $conn->prepare("INSERT INTO student (studentNo, studentName, studentSurname, studentDateOfBirth, studentTelNo, studentMail, studentGender, studentFaculty, studentDepartment)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssssssss", $no, $name, $surname, $dob, $tel, $mail, $gender, $faculty, $department);
-        if ($stmt->execute()) {
+        $sql = "INSERT INTO student (studentNo, studentName, studentSurname, studentDateOfBirth, studentTelNo, studentMail, studentGender, studentFaculty, studentDepartment)
+                VALUES ('$no','$name', '$surname', '$dob', '$tel', '$mail', '$gender', '$faculty', '$department')";
+
+        if ($conn->query($sql) === TRUE) {
             // Başarılıysa kullanıcıya yeşil başarı mesajı veriliyor
             $message = "
                 <div class='alert alert-success text-center'>
@@ -70,8 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="container mt-5">
     
-    <!-- PHP'de tanımlanan $message değişkeni burada gösteriliyor. 
-         Bu kısım çok önemli çünkü PHP'den HTML'e veri aktarımı bu şekilde yapılır. -->
+    <!-- PHP'de tanımlanan $message değişkeni burada gösteriliy -->
     <?= $message ?> 
 
         <h2 class="mb-4 text-center">Yeni Öğrenci Ekle</h2>

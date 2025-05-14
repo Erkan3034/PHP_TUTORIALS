@@ -1,0 +1,44 @@
+Merhab Erkan!
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Vestibulum ut arcu malesuada, commodo enim ut, ultricies arcu.
+Nam placerat nunc a luctus congue.
+Ut vel sapien rhoncus, tempor leo sit amet, semper elit.
+Phasellus accumsan ante non nisl vehicula, vitae cursus mi lacinia.
+Duis vulputate lectus eget eros convallis, sed sollicitudin odio varius.
+Etiam maximus mauris id dolor mattis tincidunt.
+Suspendisse tristique nunc at mauris posuere, sed elementum felis ultrices.
+Aenean ornare metus vitae elit scelerisque facilisis at ut urna.
+Fusce lacinia sapien vitae tortor facilisis dictum.
+Pellentesque in neque mollis, mollis nulla nec, vulputate leo.
+Donec luctus metus hendrerit, commodo elit dapibus, lobortis elit.
+Donec blandit mauris vel massa pulvinar, sit amet pellentesque erat ullamcorper.
+Ut accumsan nisl luctus, dictum lorem vel, malesuada nibh.
+Nam eleifend turpis ac elit gravida tincidunt.
+Integer ut neque lacinia, maximus velit quis, rutrum turpis.
+Mauris nec ligula ac ligula pretium tincidunt quis vitae dolor.
+Morbi eget arcu sed diam dignissim tristique vel pretium arcu.
+Etiam a justo eu felis hendrerit tristique vel eu turpis.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Vestibulum ut arcu malesuada, commodo enim ut, ultricies arcu.
+Nam placerat nunc a luctus congue.
+Ut vel sapien rhoncus, tempor leo sit amet, semper elit.
+Phasellus accumsan ante non nisl vehicula, vitae cursus mi lacinia.
+Duis vulputate lectus eget eros convallis, sed sollicitudin odio varius.
+Etiam maximus mauris id dolor mattis tincidunt.
+Suspendisse tristique nunc at mauris posuere, sed elementum felis ultrices.
+Aenean ornare metus vitae elit scelerisque facilisis at ut urna.
+Fusce lacinia sapien vitae tortor facilisis dictum.
+Pellentesque in neque mollis, mollis nulla nec, vulputate leo.
+Donec luctus metus hendrerit, commodo elit dapibus, lobortis elit.
+Donec blandit mauris vel massa pulvinar, sit amet pellentesque erat ullamcorper.
+Ut accumsan nisl luctus, dictum lorem vel, malesuada nibh.
+Nam eleifend turpis ac elit gravida tincidunt.
+Integer ut neque lacinia, maximus velit quis, rutrum turpis.
+Mauris nec ligula ac ligula pretium tincidunt quis vitae dolor.
+Morbi eget arcu sed diam dignissim tristique vel pretium arcu.
+Etiam a justo eu felis hendrerit tristique vel eu turpis.
+LAST LİNE!
+Icerik file_put_contents() ile bu metin eklendi
+Icerik file_put_contents() ile bu metin eklendi
+Icerik file_put_contents() ile bu metin eklendi
+Icerik file_put_contents() ile bu metin eklendi
