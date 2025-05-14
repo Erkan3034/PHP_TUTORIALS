@@ -119,12 +119,13 @@ spl_autoload_register(function ($className) {
     include 'classes/' . strtolower($className) . '.php';
 });
 
-// classes/kullanici.php dosyasını oluşturalım
+// Önce classes dizinini ve kullanici.php dosyasını oluştur
 if (!file_exists('classes')) {
     mkdir('classes');
 }
 file_put_contents('classes/kullanici.php', '<?php class Kullanici { public function selam() { return "Merhaba!"; } } ?>');
 
+// Sonra sınıfı kullan
 $kullanici = new Kullanici();
 echo $kullanici->selam() . "<br>"; // Çıktı: Merhaba!
 
