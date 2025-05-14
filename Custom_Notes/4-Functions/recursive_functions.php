@@ -144,7 +144,8 @@ say();
 echo "<br>";
 say();
 echo "<hr>";
-=======
+?>
+//=======
 <?php
 //!=======================RECURSIVE Fonksiyonlar=======================
 
@@ -173,7 +174,7 @@ Karmaşık algoritmalar (quicksort, mergesort gibi)
 
 //Örnek:
 
-function sayi($i)
+function sayi1($i)
 {
     echo $i . " <br>";
     if ($i < 10) {
@@ -182,7 +183,7 @@ function sayi($i)
     }
 }
 echo "Recursive Function: <br>";
-sayi(1);
+sayi1(1);
 echo "<hr>";
 //!----------------------------örnek 2
 
@@ -235,7 +236,7 @@ $categories = [
  */
 
 
-function getCategories($arr, $par = 0)
+function getCategories1($arr, $par = 0)
 {
     $html = ""; // HTML çıktısını biriktirmek için boş string
 
@@ -248,7 +249,7 @@ function getCategories($arr, $par = 0)
         if ($value['parent'] == $par) {
             $html .= "<li>";
             $html .= $value['name']; // Kategori adını ekle
-            $html .= getCategories($arr, $value['id']); // Alt kategorileri listelemek için fonksiyonu tekrar çağır
+            $html .= getCategories1($arr, $value['id']); // Alt kategorileri listelemek için fonksiyonu tekrar çağır
             //$html .="<li>" .$value['name'] . "</li>"; // Kategori adını ve HTML satır sonu ekle
             $html .= "</li>";
         }
@@ -279,15 +280,16 @@ echo getCategories($categories);
 
  *Sonraki çağrılarda bu satır göz ardı edilir
  */
-function say()
+function say1()
 {
     static $sayi = 0;
     echo $sayi;
     $sayi++;
 }
 
-say();
+say1();
 echo "<br>";
-say();
+say1();
 echo "<hr>";
+?>
 >>>>>>> cbc7f9893baa939c1a26651bf141a64ce1edf6fe
