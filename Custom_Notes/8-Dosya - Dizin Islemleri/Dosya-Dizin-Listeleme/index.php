@@ -46,15 +46,4 @@ function listAll($dir) {
 
 listAll($baseDir); 
 //Tüm dosyaları listeleme
-
-
-function listAll($dir) {
-
-    $files = scandir($dir);
-    foreach ($files as $file) {
-        echo $file . "<br>";
-    }
-}
-
-listAll($baseDir); 
 ?>
