@@ -2,7 +2,7 @@
 
 Bu depo, kişisel PHP notlarımı, öğrendiğim konseptleri ve örnek kodları içermektedir. PHP ile ilgili temel ve ileri seviye konulara dair notlarımı burada paylaşarak ilerlememi takip ediyorum.
 
-##🐘 İçerik
+## 🐘 İçerik
 
 - **Temel PHP Konuları**
   - Değişkenler, Veri Tipleri, Operatörler
