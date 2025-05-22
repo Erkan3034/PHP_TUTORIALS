@@ -1,8 +1,8 @@
 <?php
 // Veritabanı bağlantı bilgileri
 $host = 'localhost';
-$user = 'admin';
-$password = 'Erkan1205*-+';
+$user = 'root';
+$password = 'Erkan1205/*-+';
 $database = 'university';
 
 // Veritabanı bağlantısı kurulur
@@ -25,12 +25,12 @@ if ($result->num_rows != 1) {
 }
 
 // Öğrenci bilgisi bir dizi olarak alınır
-$student = $result->fetch_assoc();
+$student = $result->fetch_assoc(); 
 
 // Eğer form gönderilmişse (yani method POST ise)
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
     // Formdan gelen bilgiler değişkenlere atanır
-    $name = $_POST['studentName'];
+    $name = $_POST['studentName']; // Öğrenci adı alınır 
     $surname = $_POST['studentSurname'];
     $dob = $_POST['studentDateOfBirth'];
     $tel = $_POST['studentTelNo'];
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $faculty = $_POST['studentFaculty'];
     $department = $_POST['studentDepartment'];
 
-    // Güncelleme SQL sorgusu oluşturulur
+    // Güncelleme SQL sorgusu
     $sql = "UPDATE student SET
         studentName = '$name',
         studentSurname = '$surname',
@@ -59,6 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Hata: " . $conn->error; // Hata varsa göster
     }
 }
+var_dump($sql)
 ?>
 
 <!doctype html>

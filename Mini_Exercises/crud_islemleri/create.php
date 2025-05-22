@@ -1,7 +1,7 @@
 <?php
 // Veritabanı bağlantısı için bilgiler tanımlanıyor
 $host = 'localhost';
-$user = 'admin';
+$user = 'root';
 $password = 'Erkan1205/*-+';
 $database = 'university';
 

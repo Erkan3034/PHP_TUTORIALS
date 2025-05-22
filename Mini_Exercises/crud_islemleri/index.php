@@ -1,7 +1,7 @@
 <?php
 $host = 'localhost';
-$user = 'admin';
-$password = 'Erkan1205/*-+'; 
+$user = 'root';
+$password = 'Erkan1205/*-+';
 $database = 'university';
 
 // MySQL sunucusuna bağlantı
@@ -32,8 +32,8 @@ $sql = "SELECT * FROM student $search_sql LIMIT $start_from, $records_per_page";
 $results = $conn->query($sql);
 
 // Toplam kayıt sayısını alıp kaç sayfa olacağını hesaplıyoruz
-$sql_count = "SELECT COUNT(*) FROM student $search_sql";
-$count_result = $conn->query($sql_count);
+$sql_count = "SELECT COUNT(*) FROM student $search_sql"; // Toplam kayıt sayısını alıyoruz
+$count_result = $conn->query($sql_count); //
 $total_records = $count_result->fetch_row()[0]; // Kaç kayıt olduğunu alıyoruz
 $total_pages = ceil($total_records / $records_per_page); // Sayfa sayısını hesapla
 ?>
@@ -46,6 +46,7 @@ $total_pages = ceil($total_records / $records_per_page); // Sayfa sayısını he
     <meta charset="utf-8">
     <title>Öğrenci Listesi</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -61,52 +62,55 @@ $total_pages = ceil($total_records / $records_per_page); // Sayfa sayısını he
             <button type="submit" class="btn btn-primary mt-2">Ara</button>
         </form>
 
-        <?php if ($results->num_rows > 0): ?>
-    
+        <?php if ($results->num_rows > 0): ?> <!-- Eğer sonuç varsa tablo gösteriliyor -->
+
             <!-- Tablo Başlangıcı -->
-         <div class="table-responsive">
-            <table class="table table-bordered table-hover table-striped  mx-auto">
-                <thead class="table-dark">
-                    <tr>
-                        <th>ÖĞRENCİ NO</th>
-                        <th>İSİM</th>
-                        <th>SOYİSİM</th>
-                        <th>DOĞUM TARİHİ</th>
-                        <th>TELEFON NO</th>
-                        <th>MAIL ADRESİ</th>
-                        <th>CİNSİYET</th>
-                        <th>FAKÜLTE</th>
-                        <th>DEPARTMAN</th>
-                        <th class="text-white bg-danger border-info border-2">İŞLEMLER</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <!-- Her satır için döngü -->
-                    <?php while ($row = $results->fetch_assoc()): ?>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped  mx-auto">
+                    <thead class="table-dark">
                         <tr>
-                            <!-- PHP'den gelen veriler HTML içine yazılıyor -->
-                            <td><?= htmlspecialchars($row['studentNo']) ?></td>
-                            <td><?= htmlspecialchars($row['studentName']) ?></td>
-                            <td><?= htmlspecialchars($row['studentSurname']) ?></td>
-                            <td><?= htmlspecialchars($row['studentDateOfBirth']) ?></td>
-                            <td><?= htmlspecialchars($row['studentTelNo']) ?></td>
-                            <td><?= htmlspecialchars($row['studentMail']) ?></td>
-                            <td><?= htmlspecialchars($row['studentGender']) ?></td>
-                            <td><?= htmlspecialchars($row['studentFaculty']) ?></td>
-                            <td><?= htmlspecialchars($row['studentDepartment']) ?></td>
-                            <td class="text-center d-inline-flex flex-column">
-                                <!-- Güncelleme ve Silme işlemleri için linkler -->
-                                <a href="update.php?id=<?= $row['studentNo'] ?>" class="btn mb-1 btn-sm btn-warning ">Güncelle</a>
-                                <a href="delete.php?id=<?= $row['studentNo'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Silmek istediğinize emin misiniz?')">Sil</a>
-                            </td>
+                            <th>ÖĞRENCİ NO</th>
+                            <th>İSİM</th>
+                            <th>SOYİSİM</th>
+                            <th>DOĞUM TARİHİ</th>
+                            <th>TELEFON NO</th>
+                            <th>MAIL ADRESİ</th>
+                            <th>CİNSİYET</th>
+                            <th>FAKÜLTE</th>
+                            <th>DEPARTMAN</th>
+                            <th class="text-white bg-danger border-info border-2">İŞLEMLER</th>
                         </tr>
+                    </thead>
+                    <tbody>
+
+                        <!-- Her satır için döngü -->
+                        <?php while ($row = $results->fetch_assoc()): ?>
+                            <tr>
+                                <!-- PHP'den gelen veriler HTML içine yazılıyor -->
+                                <td><?= htmlspecialchars($row['studentNo']) ?></td>
+                                <td><?= htmlspecialchars($row['studentName']) ?></td>
+                                <td><?= htmlspecialchars($row['studentSurname']) ?></td>
+                                <td><?= htmlspecialchars($row['studentDateOfBirth']) ?></td>
+                                <td><?= htmlspecialchars($row['studentTelNo']) ?></td>
+                                <td><?= htmlspecialchars($row['studentMail']) ?></td>
+                                <td><?= htmlspecialchars($row['studentGender']) ?></td>
+                                <td><?= htmlspecialchars($row['studentFaculty']) ?></td>
+                                <td><?= htmlspecialchars($row['studentDepartment']) ?></td>
+                                <td class="text-center d-inline-flex flex-column">
+                                    <!-- Güncelleme ve Silme işlemleri için linkler -->
+                                    <a href="update.php?id=<?= htmlspecialchars($row['studentNo'], ENT_QUOTES, 'UTF-8') ?>" class="btn mb-1 btn-sm btn-warning"><i class="bi bi-pencil-square"></i>Güncelle</a>
+
+                                    <a href="delete.php?id=<?= $row['studentNo'] ?>" class="btn btn-sm btn-danger" onclick="return confirm(' <?= $row['studentNo']; ?> nolu öğrenci kaydını Silmek istediğinize emin misiniz?')">
+                                        <i class="bi bi-trash"></i> Sil
+                                    </a>
+                                </td>
+                            </tr>
 
 
-                    <?php endwhile; ?>
-                </tbody>
-            </table>
-        </div>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+            </div>
             <!-- Sayfalama (Pagination) -->
             <nav>
                 <ul class="pagination justify-content-center">
@@ -132,6 +136,7 @@ $total_pages = ceil($total_records / $records_per_page); // Sayfa sayısını he
     <!-- Bootstrap JS dosyası -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
 
 <?php
