@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 $id = trim($_GET['id'] ?? '');
 
 // Veritabanından bu öğrenci numarasına sahip kayıt çekilir
-$result = $conn->query("SELECT * FROM student WHERE studentNo = $id");
+$result = $conn->query("SELECT studentName, studentSurname,studentDateOfBirth,studentTelNo,studentMail,studentGender,studentFaculty,studentDepartment  FROM student WHERE studentNo = $id");
 
 // Eğer öğrenci bulunamazsa, sayfa hata mesajı göstererek durur
 if ($result->num_rows != 1) {
@@ -59,7 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Hata: " . $conn->error; // Hata varsa göster
     }
 }
-var_dump($sql)
 ?>
 
 <!doctype html>
