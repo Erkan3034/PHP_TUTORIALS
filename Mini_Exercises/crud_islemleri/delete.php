@@ -33,9 +33,10 @@ if (is_numeric($id)) {
     $stmt = $conn->prepare("DELETE FROM student WHERE studentNo = ?");
     */
 
-    $sql="UPDATE student SET sil=1 WHERE studentNo = ?";
+    //Kayıt silme işlemini UPDATE ile yapıyoruz. 
+    $sql="UPDATE student SET sil=1 WHERE studentNo = ?"; // studentNo'ya göre silme işlemi durumunu 1 yapıyoruz(biz sadece 2 olanları listelemiştik)
     $stmt = $conn->prepare($sql);
-    
+
     if ($stmt) { //
         $stmt->bind_param("i", $id);  // i: integer tipi
         

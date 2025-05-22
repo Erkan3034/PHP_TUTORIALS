@@ -28,7 +28,7 @@ $search = isset($_GET['search']) ? $_GET['search'] : '';
 $search_sql = $search ? "WHERE studentName LIKE '%$search%' OR studentSurname LIKE '%$search%'" : '';
 
 // Öğrenci verilerini LIMIT ile sorguluyoruz
-$sql = "SELECT * FROM student $search_sql LIMIT $start_from, $records_per_page";
+$sql = "SELECT * FROM student where sil=2 $search_sql LIMIT $start_from, $records_per_page "; // sil=2 olanları alıyoruz
 $results = $conn->query($sql);
 
 // Toplam kayıt sayısını alıp kaç sayfa olacağını hesaplıyoruz
