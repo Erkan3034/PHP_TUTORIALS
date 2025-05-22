@@ -1,36 +1,35 @@
 <?php
-// Veritabanı bağlantı bilgileri
 $host = 'localhost';
 $user = 'root';
 $password = 'Erkan1205/*-+';
 $database = 'university';
 
-// Veritabanı bağlantısı kurulur
 $conn = new mysqli($host, $user, $password, $database);
-
-// Bağlantı hatası kontrol edilir
 if ($conn->connect_error) {
-    die("Bağlantı Hatası: " . $conn->connect_error); // Hata varsa sayfayı durdurur
+    die("Bağlantı Hatası: " . $conn->connect_error);
 }
 
-// GET ile gelen öğrenci numarası (id) alınır, boşluklar temizlenir
-$id = trim($_GET['id'] ?? '');
+$id = trim($_GET['id'] ?? ''); // ID'yi alıyoruz ve boşsa hata veriyoruz
 
-// Veritabanından bu öğrenci numarasına sahip kayıt çekilir
-$result = $conn->query("SELECT studentName, studentSurname,studentDateOfBirth,studentTelNo,studentMail,studentGender,studentFaculty,studentDepartment  FROM student WHERE studentNo = $id");
+// ID'nin sadece sayısal olup olmadığını kontrol edelim
+if (!ctype_digit($id)) {
+    die("Geçersiz öğrenci numarası.");
+}
 
-// Eğer öğrenci bulunamazsa, sayfa hata mesajı göstererek durur
+// Prepared statement ile öğrenciyi çek
+$stmt = $conn->prepare("SELECT studentName, studentSurname, studentDateOfBirth, studentTelNo, studentMail, studentGender, studentFaculty, studentDepartment FROM student WHERE studentNo = ?");
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$result = $stmt->get_result();
+
 if ($result->num_rows != 1) {
     die("Öğrenci bulunamadı.");
 }
 
-// Öğrenci bilgisi bir dizi olarak alınır
-$student = $result->fetch_assoc(); 
+$student = $result->fetch_assoc();
 
-// Eğer form gönderilmişse (yani method POST ise)
-if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
-    // Formdan gelen bilgiler değişkenlere atanır
-    $name = $_POST['studentName']; // Öğrenci adı alınır 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = $_POST['studentName'];
     $surname = $_POST['studentSurname'];
     $dob = $_POST['studentDateOfBirth'];
     $tel = $_POST['studentTelNo'];
@@ -39,27 +38,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $faculty = $_POST['studentFaculty'];
     $department = $_POST['studentDepartment'];
 
-    // Güncelleme SQL sorgusu
-    $sql = "UPDATE student SET
-        studentName = '$name',
-        studentSurname = '$surname',
-        studentDateOfBirth = '$dob',
-        studentTelNo = '$tel',
-        studentMail = '$mail',
-        studentGender = '$gender',
-        studentFaculty = '$faculty',
-        studentDepartment = '$department'
-        WHERE studentNo = $id";
+    // Güncelleme sorgusunu hazırlayıp parametreleri bağla
+    $update = $conn->prepare("UPDATE student SET
+        studentName = ?,
+        studentSurname = ?,
+        studentDateOfBirth = ?,
+        studentTelNo = ?,
+        studentMail = ?,
+        studentGender = ?,
+        studentFaculty = ?,
+        studentDepartment = ?
+        WHERE studentNo = ?"); //studetNo'ya göre WHERE ile güncelliyoruz
 
-    // Sorgu başarıyla çalıştıysa, ana sayfaya yönlendirme yapılır
-    if ($conn->query($sql) === TRUE) {
-        header("Location: index.php"); // yönlendirme
-        exit;
-    } else {
-        echo "Hata: " . $conn->error; // Hata varsa göster
-    }
+    $update->bind_param("ssssssssi", $name, $surname, $dob, $tel, $mail, $gender, $faculty, $department, $id);
+
+if ($update->execute()) {
+    $success = true;
+} else {
+    echo "Hata: " . $update->error;
+}
 }
 ?>
+
 
 <!doctype html>
 <html lang="tr">
@@ -70,8 +70,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+
 <div class="container container-fluid mt-5">
     <h2 class="mb-4 text-center">Öğrenci Bilgilerini Güncelle</h2>
+    
+<?php if (!empty($success)) : ?>
+    <div class="alert alert-success mt-3" role="alert">
+        Kayıt başarıyla güncellendi! Ana sayfaya yönlendiriliyorsunuz...
+    </div>
+    <script>
+        setTimeout(function() {
+            window.location.href = "index.php";
+        }, 2000);
+    </script>
+<?php endif; ?>
 
     <!-- Formun method'u POST. PHP'nin üstteki kısmında bu kontrol ediliyor -->
     <form method="post">
