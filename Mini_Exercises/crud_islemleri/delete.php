@@ -28,8 +28,13 @@ $id = $_GET['id'];
 // ID sayısal mı kontrol edelim
 if (is_numeric($id)) {
 
+    /*
     // Hazırlıklı sorgu (prepared statement)
     $stmt = $conn->prepare("DELETE FROM student WHERE studentNo = ?");
+    */
+
+    $sql="UPDATE student SET sil=1 WHERE studentNo = ?";
+    $stmt = $conn->prepare($sql);
     
     if ($stmt) { //
         $stmt->bind_param("i", $id);  // i: integer tipi
