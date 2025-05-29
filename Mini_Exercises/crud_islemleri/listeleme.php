@@ -1,4 +1,12 @@
 <?php
+session_start();
+
+// Check if user is logged in
+if (!isset($_SESSION['user_id'])) { //user is not logged in
+    header("Location: login.php");
+    exit;
+}
+
 $host = 'localhost';
 $user = 'root';
 $password = 'Erkan1205/*-+';
@@ -51,8 +59,14 @@ $total_pages = ceil($total_records / $records_per_page); // Sayfa sayısını he
 </head>
 
 <body>
-    <div class="shadow-lg p-5  container  mt-5">
-        <h2 class="mb-4 text-center display-1 fw-bold">ÖĞRENCİ LİSTESİ</h2>
+    <div class="shadow-lg p-5 container mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="display-1 fw-bold">ÖĞRENCİ LİSTESİ</h2>
+            <div>
+                <span class="me-3">Hoş geldiniz, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
+                <a href="logout.php" class="btn btn-danger"><i class="bi bi-box-arrow-right"></i> Çıkış Yap</a>
+            </div>
+        </div>
 
         <!-- Arama Formu -->
         <form method="get" class="mb-3 text-center ">
