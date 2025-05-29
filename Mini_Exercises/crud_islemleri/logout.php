@@ -10,9 +10,9 @@ if (isset($_COOKIE[session_name()])) {
 }
 
 // Destroy the session
-session_destroy();
+session_destroy(); 
 
 // Redirect to login page
 header("Location: login.php");
 exit;
-?> 
+?>

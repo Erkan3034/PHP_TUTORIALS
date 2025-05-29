@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-// If user is already logged in, redirect to index
+// If user is already logged in, redirect to listeleme.php
 if (isset($_SESSION['user_id'])) {
-    header("Location: index.php");
+    header("Location: listeleme.php");
     exit;
 }
 
@@ -27,9 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
 
-    // Validation
     if (empty($username) || empty($password) || empty($confirm_password)) {
-        $error = "Tüm alanları doldurunuz.";
+        $error = "Lütfen Tüm alanları doldurunuz.";
     } elseif (strlen($username) < 3 || strlen($username) > 50) {
         $error = "Kullanıcı adı 3-50 karakter arasında olmalıdır.";
     } elseif (strlen($password) < 6) {
@@ -37,25 +36,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($password !== $confirm_password) {
         $error = "Şifreler eşleşmiyor.";
     } else {
+
+
         // Check if username already exists
         $stmt = $conn->prepare("SELECT id FROM users WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
 
-        if ($result->num_rows > 0) {
+        if ($result->num_rows > 0) { //check if the username already exists
             $error = "Bu kullanıcı adı zaten kullanılıyor.";
-        } else {
-            // Hash password and create user
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-            
+        }
+        
+        else {
+            // Hash password and insert new user
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT); 
             $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
             $stmt->bind_param("ss", $username, $hashed_password);
             
-            if ($stmt->execute()) {
+            if ($stmt->execute()) { //execute the statement(insert the data into the database)
                 $success = "Kayıt başarılı! Şimdi giriş yapabilirsiniz.";
-                // Redirect to login page after 2 seconds
-                header("refresh:2;url=login.php");
             } else {
                 $error = "Kayıt sırasında bir hata oluştu: " . $conn->error;
             }
@@ -88,9 +88,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <div class="container">
-        <div class="register-container shadow-lg">
-            <h2 class="text-center mb-4">Öğrenci Yönetim Sistemi</h2>
-            <h4 class="text-center mb-4">Kayıt Ol</h4>
+        <div class="register-container shadow-lg" id="registerForm">
+            <h2 class="text-center mb-4">Kayıt Ol</h2>
             
             <?php if ($error): ?>
                 <div class="alert alert-danger"><?php echo htmlspecialchars($error); ?></div>
@@ -111,20 +110,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <div class="mb-3">
                     <label for="password" class="form-label">Şifre</label>
-                    <input type="password" class="form-control" id="password" name="password" 
-                           required minlength="6">
+                    <input type="password" class="form-control" id="password" name="password" required minlength="6">
                     <div class="form-text">En az 6 karakter olmalıdır.</div>
                 </div>
 
                 <div class="mb-3">
                     <label for="confirm_password" class="form-label">Şifre Tekrar</label>
-                    <input type="password" class="form-control" id="confirm_password" 
-                           name="confirm_password" required minlength="6">
+                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" required minlength="6">
                 </div>
 
-                <div class="d-grid gap-2">
+                <div class="d-grid">
                     <button type="submit" class="btn btn-primary">Kayıt Ol</button>
-                    <a href="login.php" class="btn btn-secondary">Giriş Sayfasına Dön</a>
+                </div>
+
+                <div class="text-center mt-3">
+                    <p class="mb-0">Zaten hesabınız var mı? <a href="login.php">Giriş Yap</a></p>
                 </div>
             </form>
         </div>
