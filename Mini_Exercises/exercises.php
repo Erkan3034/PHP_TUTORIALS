@@ -2,7 +2,7 @@
 echo "<pre>";
 function myFunc($dizi, $adet) {
 
-    // Boş elemanları temizlemek için array_filter kullanıyyorum.
+    // Boş elemanları temizlemek için array_filter kullanıyyoruz
     $temizlenmis = array_filter($dizi, function($eleman) {
         return !is_null($eleman) && $eleman !== "";
     });
