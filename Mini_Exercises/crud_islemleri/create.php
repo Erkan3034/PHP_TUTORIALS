@@ -3,7 +3,8 @@ session_start();
 
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    $_SESSION['error'] = 'Önce giriş yapmalısınız.'; 
+    go('http://localhost/PHP_NOTES/Mini_Exercises/crud_islemleri/login.php', 0); // Redirect to login page
     exit;
 }
 
