@@ -2,7 +2,8 @@
 session_start();
 
 // Check if user is logged in
-if (!isset($_SESSION['user_id'])) { //user is not logged in
+if (!isset($_SESSION['user_id'])) { //if user is not logged in redirect to login page
+    $_SESSION['error'] = 'Önce giriş yapmalısınız.'; 
     header("Location: login.php");
     exit;
 }
@@ -63,7 +64,7 @@ $total_pages = ceil($total_records / $records_per_page); // Sayfa sayısını he
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="display-1 fw-bold">ÖĞRENCİ LİSTESİ</h2>
             <div>
-                <span class="me-3">Hoş geldiniz, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
+                <span class="me-3">Hoş geldiniz, <?php echo htmlspecialchars($_SESSION['username']); ?></span> <!-- Kullanıcı adını sessiondan alıp gösteriyoruz -->
                 <a href="logout.php" class="btn btn-danger"><i class="bi bi-box-arrow-right"></i> Çıkış Yap</a>
             </div>
         </div>

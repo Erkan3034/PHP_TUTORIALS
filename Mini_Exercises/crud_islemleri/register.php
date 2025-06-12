@@ -24,9 +24,10 @@ $success = '';
 
 // Check if form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = trim($_POST['username']); // Get the username from the form
-    $password = $_POST['password']; // Get the password from the form
-    $confirm_password = $_POST['confirm_password']; // Get the confirm password from the form
+    $username = htmlspecialchars(trim($_POST['username'])); // Get the username from the form with htmlspecialchars to prevent XSS
+    // htmlspecialchars is used to prevent XSS attacks by escaping special characters
+    $password = htmlspecialchars(trim($_POST['password'])); // Get the password from the form
+    $confirm_password = (htmlspecialchars(trim($_POST['confirm_password'])));  // Get the confirm password from the form
 
     if (empty($username) || empty($password) || empty($confirm_password)) { // Check if any field is empty
         $error = "Lütfen Tüm alanları doldurunuz."; 
@@ -40,8 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
         // Check if username already exists
-        $stmt = $conn->prepare("SELECT id FROM users WHERE username = ?");
-        $stmt->bind_param("s", $username);
+        $stmt = $conn->prepare("SELECT id FROM users WHERE username = ?"); // Prepare the SQL statement to prevent SQL injection
+        $stmt->bind_param("s", $username); 
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -51,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         else {
             // Hash password and insert new user
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT); 
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT); // Hash the password using password_hash function
             $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
             $stmt->bind_param("ss", $username, $hashed_password);
             
