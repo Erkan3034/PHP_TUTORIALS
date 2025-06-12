@@ -21,6 +21,10 @@ if ($conn->connect_error) {
 }
 
 $error = '';
+if (isset($_SESSION['error'])) {
+    $error = $_SESSION['error'];
+    unset($_SESSION['error']);
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = htmlspecialchars(trim($_POST['username'])); // Kullanıcı adını al ve XSS saldırılarına karşı koru
