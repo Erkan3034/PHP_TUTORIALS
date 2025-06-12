@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once 'go.php'; // Include the go function for redirection
 
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) { //if user is not logged in redirect to login page

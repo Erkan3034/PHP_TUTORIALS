@@ -1,6 +1,8 @@
 <?php
-session_start();
 
+session_start();
+require_once 'go.php';
+ // go fonksiyonunu içe aktar
 // Eğer kullanıcı zaten giriş yaptıysa, listeleme sayfasına yönlendir
 if (isset($_SESSION['user_id'])) {
     header("Location: listeleme.php");
@@ -39,8 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 session_regenerate_id(true);
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
-                header("Location: listeleme.php");
-                exit;
+                // Giriş başarılıysa, listeleme sayfasına yönlendir
+                go('http://localhost/PHP_NOTES/Mini_Exercises/crud_islemleri/listeleme.php',0); // Giriş başarılıysa listeleme sayfasına yönlendir
             } else {
                 $error = "Kullanıcı adı veya şifre yanlış.";
             }
@@ -112,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container h-50 ">
         <div class="login-container">
             <div class="text-center brand-logo mb-3">
                 <img src="https://upload.wikimedia.org/wikipedia/tr/7/7b/Bart%C4%B1n_%C3%9Cniversitesi_logosu.jpg" alt="Logo">
