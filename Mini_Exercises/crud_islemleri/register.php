@@ -21,15 +21,16 @@ if ($conn->connect_error) {
 $error = '';
 $success = '';
 
+
 // Check if form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = trim($_POST['username']);
-    $password = $_POST['password'];
-    $confirm_password = $_POST['confirm_password'];
+    $username = trim($_POST['username']); // Get the username from the form
+    $password = $_POST['password']; // Get the password from the form
+    $confirm_password = $_POST['confirm_password']; // Get the confirm password from the form
 
-    if (empty($username) || empty($password) || empty($confirm_password)) {
-        $error = "Lütfen Tüm alanları doldurunuz.";
-    } elseif (strlen($username) < 3 || strlen($username) > 50) {
+    if (empty($username) || empty($password) || empty($confirm_password)) { // Check if any field is empty
+        $error = "Lütfen Tüm alanları doldurunuz."; 
+    } elseif (strlen($username) < 3 || strlen($username) > 50) { 
         $error = "Kullanıcı adı 3-50 karakter arasında olmalıdır.";
     } elseif (strlen($password) < 6) {
         $error = "Şifre en az 6 karakter olmalıdır.";
@@ -99,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="alert alert-success"><?php echo htmlspecialchars($success); ?></div>
             <?php endif; ?>
 
-            <form method="POST" action="">
+            <form method="POST" action=""> <!-- Form submission method is POST -->
                 <div class="mb-3">
                     <label for="username" class="form-label">Kullanıcı Adı</label>
                     <input type="text" class="form-control" id="username" name="username" 
@@ -120,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
 
                 <div class="d-grid">
-                    <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+                    <button type="submit" class="btn btn-primary" name="register">Kayıt Ol</button>
                 </div>
 
                 <div class="text-center mt-3">
