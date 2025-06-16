@@ -16,7 +16,7 @@ function calculatePoint($vize, $final)
 {
     $not = ($vize * 0.4) + ($final * 0.6);
     if ($not>50) {
-        echo "Notunuz: $not. Geçtiniz...";
+        echo "Notunuz: $not. Geçtiniz....";
     }
     else {
         echo "Kaldınız.";
