@@ -13,7 +13,7 @@ if (!isset($_SESSION['user_id'])) { //if user is not logged in redirect to login
 
 $host = 'localhost';
 $user = 'root';
-$password = 'Erkan1205/*-+';
+$password = 'Erkan';
 $database = 'university';
 
 // MySQL sunucusuna bağlantı
