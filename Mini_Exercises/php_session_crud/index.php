@@ -77,19 +77,19 @@ require_once 'system/baglanti.php';
                             <div id="loginForm">
                                 <form method="POST">
                                     <div class="mb-3">
-                                        <label for="username" class="form-label">Kullanıcı Adı</label>
+                                        <label for="username" class="form-label"></label>
                                         <input type="text" class="form-control" id="username" name="username" required placeholder="Kullanıcı Adı">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="password" class="form-label">Şifre</label>
-                                        <input type="password" class="form-control" id="password" name="password" required>
+                                        <label for="password" class="form-label"></label>
+                                        <input type="password" class="form-control" id="password" name="password" required placeholder="Şifre">
                                     </div>
                                     <div class="d-grid mb-3">
                                         <button type="submit" name="login" class="btn btn-primary">Giriş Yap</button>
                                     </div>
                                 </form>
                                 <div class="text-center">
-                                    <button type="button" class="btn btn-link" onclick="toggleForm()">Hesabınız yok mu? Kayıt olun</button>
+                                Hesabınız yok mu?<button type="button" class="btn btn-link" onclick="toggleForm()"> Kayıt olun</button>
                                 </div>
                             </div>
 
