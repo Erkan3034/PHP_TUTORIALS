@@ -1,4 +1,7 @@
-<?php require_once 'system/baglanti.php'; ?>
+<?php 
+session_start();
+require_once 'system/baglanti.php'; 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,9 +35,32 @@
                                 header("Location: inc/default.php");
                                 exit;                            
                             }
-
                             
+                            if(isset($_POST['login'])){
+                                $username = htmlspecialchars(trim($_POST['username']));
+                                $password = htmlspecialchars(trim($_POST['password']));
+                                $password_hash = hash('sha256', $password);
+
+                                $query = $conn->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
+                                $query->bind_param('ss', $username, $password_hash);
+                                $query->execute();
+                                $result = $query->get_result();
+
+                                if($result->num_rows > 0){
+                                    $user = $result->fetch_assoc();
+                                    $_SESSION['id'] = $user['id'];
+                                    $_SESSION['username'] = $user['username'];
+                                    $_SESSION['email'] = $user['email'];
+
+                                    header("Location: inc/default.php");
+                                    exit;
+                                }
+                                else{
+                                    echo "<div class='alert alert-danger'>Kullanıcı adı veya şifre hatalı</div>";
+                                }
+                            }
                             ?>
+
                             <!--GİRİŞ FORMU-->
                             <div id="loginForm">
                                 <form method="POST">
@@ -50,28 +76,69 @@
                                         <button type="submit" name="login" class="btn btn-primary">Giriş Yap</button>
                                     </div>
                                 </form>
+                                <div class="text-center">
+                                    <button type="button" class="btn btn-link" onclick="toggleForm()">Hesabınız yok mu? Kayıt olun</button>
+                                </div>
                             </div>
 
+                            <?php
+                            if(isset($_POST['register'])){
+                                $username = htmlspecialchars(trim($_POST['username']));
+                                $email = htmlspecialchars(trim($_POST['email']));
+                                $password = htmlspecialchars(trim($_POST['password']));
+                                $password_hash = hash('sha256', $password);
+                                
+
+                                //required fields check
+                                if(!empty($username) && !empty($email) && !empty($password)){
+                                    $is_there_user = $conn->prepare("SELECT username,email FROM users WHERE username = ? OR email = ?");
+                                    $is_there_user->bind_param('ss', $username, $email);
+                                    $is_there_user->execute();
+                                    $is_there_user_result = $is_there_user->get_result();
+
+                                    if($is_there_user_result->num_rows > 0){
+                                        echo "<div class='alert alert-danger'>Kullanıcı adı veya email zaten kullanılıyor. Lütfen farklı bir kullanıcı adı veya email giriniz.</div>";
+                                    }
+                                    else{
+                                        $insert_user = $conn->prepare("INSERT INTO users (username,email,password) VALUES (?,?,?)");
+                                        $insert_user->bind_param('sss', $username, $email, $password_hash);
+                                        
+                                        if($insert_user->execute()){
+                                            echo "<div class='alert alert-success'>Kayıt başarıyla tamamlandı. Giriş yapabilirsiniz.</div>";
+                                        }
+                                        else{
+                                            echo "<div class='alert alert-danger'>Kayıt başarısız. Lütfen daha sonra tekrar deneyiniz.</div>";
+                                        }
+                                    }
+                                }
+                                else{
+                                    echo "<div class='alert alert-danger'>Lütfen tüm alanları doldurunuz.</div>";
+                                }
+                            }
+                            ?>
 
                             <!--KAYIT FORMU(basta gizli)-->
                             <div id="registerForm" style="display:none;">
                                 <form method="POST">
                                     <div class="mb-3"> 
-                                        <label for="username" class="form-label">Kullanıcı Adı</label>
-                                        <input type="text" class="form-control" id="username" name="username" required placeholder="Kullanıcı Adı">
+                                        <label for="reg_username" class="form-label">Kullanıcı Adı</label>
+                                        <input type="text" class="form-control" id="reg_username" name="username" required placeholder="Kullanıcı Adı">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="email" name="email" required placeholder="Email">
+                                        <label for="reg_email" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="reg_email" name="email" required placeholder="Email">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="password" class="form-label">Şifre</label>
-                                        <input type="password" class="form-control" id="password" name="password" required>
+                                        <label for="reg_password" class="form-label">Şifre</label>
+                                        <input type="password" class="form-control" id="reg_password" name="password" required>
                                     </div>
                                     <div class="d-grid mb-3">
                                         <button type="submit" name="register" class="btn btn-primary">Kayıt Ol</button>
                                     </div>
                                 </form>
+                                <div class="text-center">
+                                    Zaten hesabınız var mı? <button type="button" class="btn btn-link" onclick="toggleForm()">Giriş yapın</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -96,5 +163,5 @@
             registerForm.style.display = 'block';
         }
     }
-
+</script>
 </html>

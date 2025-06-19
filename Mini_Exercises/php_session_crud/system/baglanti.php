@@ -8,9 +8,8 @@ $database="university";
 $conn = new mysqli($servername, $username, $password, $database);
 
 //check connection
-
 if($conn->connect_error){
-    die("Connection failed to database: ".con->connect_error);
+    die("Connection failed to database: " . $conn->connect_error);
 }
 else{
     //echo "Connected to database successfully";
