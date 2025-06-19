@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id'])) {
 // Veritabanı bağlantısı için bilgiler tanımlanıyor
 $host = 'localhost';
 $user = 'root';
-$password = 'Erkan1205/*-+';
+$password = 'Erkan';
 $database = 'university';
 
 // mysqli nesnesi kullanılarak veritabanına bağlanılıyor
