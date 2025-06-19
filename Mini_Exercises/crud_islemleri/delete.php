@@ -12,8 +12,9 @@
 </body>
 </html>
 <?php
-session_start();
 
+session_start();
+require_once 'go.php'; // Include the go function for redirection
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     $_SESSION['error'] = 'Önce giriş yapmalısınız.'; 
@@ -53,7 +54,7 @@ if (is_numeric($id)) {
             echo '<div class="alert alert-success mt-5 container ms-5 me-5" role="alert">
                     Kayıt başarıyla silindi! Ana sayfaya yönlendiriliyorsunuz...
                   </div>';
-            header("Refresh:2; url=index.php");
+            header("Refresh:2; url=listeleme.php");
             exit;
         } else {
             echo '<div class="alert alert-danger mt-5 container ms-5 me-5" role="alert">

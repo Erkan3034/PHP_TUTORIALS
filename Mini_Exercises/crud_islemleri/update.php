@@ -89,7 +89,7 @@ if ($update->execute()) {
     </div>
     <script>
         setTimeout(function() {
-            window.location.href = "index.php";
+            window.location.href = "listeleme.php";
         }, 2000);
     </script>
 <?php endif; ?>
