@@ -31,6 +31,9 @@ if (!isset($_SESSION['id'])) {
         .bi-pencil:hover, .bi-trash3:hover {
             color: #0d6efd;
         }
+        .alert {
+            margin-bottom: 1rem;
+        }
     </style>
 
     <title>Öğrenci Bilgi Sistemi</title>
@@ -38,6 +41,32 @@ if (!isset($_SESSION['id'])) {
 
 <body>
     <div class="container mt-4">
+        <?php
+        // İşlem başarılı mesajları
+        if (isset($_GET['success'])) {
+            $message = '';
+            $type = 'success';
+            
+            switch ($_GET['success']) {
+                case '1':
+                    $message = 'Yeni öğrenci başarıyla eklendi.';
+                    break;
+                case '2':
+                    $message = 'Öğrenci bilgileri başarıyla güncellendi.';
+                    break;
+                case '3':
+                    $message = 'Öğrenci başarıyla silindi.';
+                    break;
+            }
+            
+            if ($message) {
+                echo '<div class="alert alert-' . $type . ' alert-dismissible fade show" role="alert">
+                        ' . $message . '
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>';
+            }
+        }
+        ?>
         <div class="card">
             <div class="card-header bg-info text-white d-flex justify-content-between">
                 <p class="h3">Verilerin Listelenmesi</p>
