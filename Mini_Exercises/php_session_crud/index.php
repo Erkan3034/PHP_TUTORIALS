@@ -1,4 +1,16 @@
-<?php 
+<?php
+//Çerezleri (Cookies) Sadece HTTP Üzerinden Erişilebilir Yapmak
+//Bir çerez HttpOnly olarak ayarlanırsa, bu çerez JavaScript tarafından okunamaz. Bu, XSS (Cross-Site Scripting) saldırılarına karşı önemli bir korumadır.
+//Bir saldırgan, sitene zararlı bir <script> enjekte ederse, normalde şunu yapabilir:
+//document.cookie
+// => PHPSESSID=abc123xyz; başka_çerez=değer
+ini_set('session.cookie_httponly', 1);
+
+//ini_set('session.cookie_secure', 1);    // Sadece HTTPS üzerinden gönderilsin
+// Not: session.cookie_secure sadece HTTPS (SSL sertifikası varsa) ile çalışır. HTTP'de boşuna yazma, çalışmaz.
+
+ini_set('session.use_only_cookies', 1); // Session ID URL'de taşınmasın
+
 session_start();
 require_once 'system/baglanti.php'; 
 ?>
@@ -81,6 +93,7 @@ require_once 'system/baglanti.php';
                                 </div>
                             </div>
 
+                            <!--KAYIT İşlemleri-->
                             <?php
                             if(isset($_POST['register'])){
                                 $username = htmlspecialchars(trim($_POST['username']));
