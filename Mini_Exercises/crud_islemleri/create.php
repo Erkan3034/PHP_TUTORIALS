@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id'])) {
 // Veritabanı bağlantısı için bilgiler tanımlanıyor
 $host = 'localhost';
 $user = 'root';
-$password = 'Erkan';
+$password = 'Erkan1205/*-+';
 $database = 'university';
 
 // mysqli nesnesi kullanılarak veritabanına bağlanılıyor
@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class='alert alert-success text-center'>
                     Yeni öğrenci başarıyla eklendi.
                     <br>
-                    <a href='index.php' class='btn btn-sm btn-warning mt-3'>Ana Sayfaya Dön</a>
+                    <a href='listeleme.php' class='btn btn-sm btn-warning mt-3'>Ana Sayfaya Dön</a>
                 </div>";
         } else {
             // Veritabanı hatası olursa kullanıcıya detaylı hata veriliyor
@@ -111,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <!-- Butonlar: POST işlemini başlatır ve geri dönüş sağlar -->
             <div class="text-center mt-4">
                 <button type="submit" class="btn btn-success">Kaydet</button>
-                <a href="index.php" class="btn btn-secondary">Geri Dön</a>
+                <a href="listeleme.php" class="btn btn-secondary">Geri Dön</a>
             </div>
         </form>
     </div>

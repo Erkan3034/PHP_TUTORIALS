@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $host = 'localhost';
 $user = 'root';
-$password = 'Erkan';
+$password = 'Erkan1205/*-+';
 $database = 'university';
 
 $conn = new mysqli($host, $user, $password, $database);
@@ -132,7 +132,7 @@ if ($update->execute()) {
         <!-- Butonlar -->
         <div class="text-center mt-4">
             <button type="submit" class="btn btn-primary">Güncelle</button>
-            <a href="index.php" class="btn btn-secondary">İptal</a>
+            <a href="listeleme.php" class="btn btn-secondary">İptal</a>
         </div>
     </form>
 </div>
