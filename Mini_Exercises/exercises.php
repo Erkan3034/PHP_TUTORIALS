@@ -46,7 +46,7 @@ function myFunc($dizi, $adet) {
     return $sonuc;
 }
 
-$planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "", "", NULL];
+$planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn ", "Uranus", "Neptune", "", "", NULL];
 
 print_r(myFunc($planets, 2));
 print_r(myFunc($planets, 3));
