@@ -11,7 +11,7 @@ $cars = array("Volvo", "BMW", "Toyota");
 var_dump($cars);
 echo "<hr>";
 
-//! Access indexed array:
+//! Access indexed arrays
 echo $cars[0];
 echo "<hr>";
 
